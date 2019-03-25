@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Single Data Source Reactive Android Application | Rakawm</title>
+    <meta name="description" content="Software Engineer, Motorcycle Enthusiast">
+    
+    
+    <link rel="preload" href="/assets/css/0.styles.021a0155.css" as="style"><link rel="preload" href="/assets/js/app.677728b0.js" as="script"><link rel="preload" href="/assets/js/8.ed9cf4df.js" as="script"><link rel="prefetch" href="/assets/js/3.40849f77.js"><link rel="prefetch" href="/assets/js/2.61c5963e.js"><link rel="prefetch" href="/assets/js/4.18ecf1d4.js"><link rel="prefetch" href="/assets/js/5.9674cecb.js"><link rel="prefetch" href="/assets/js/6.a04bd145.js"><link rel="prefetch" href="/assets/js/7.8b0e9971.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.021a0155.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div><a href="/" class="home-link router-link-active"><!----><span class="site-name">
+      Rakawm
+    </span></a><div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""><!----></div><nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">Home</a></div><div class="nav-item"><a href="https://github.com/rakawestu" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><!----></nav></div></header><div class="sidebar-mask"></div><div class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">Home</a></div><div class="nav-item"><a href="https://github.com/rakawestu" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><!----></nav><ul class="sidebar-links"><li><a href="/" class="sidebar-link">Hello World</a></li><li><a href="/android-modular.html" class="sidebar-link">Modular Android Project</a></li><li><a href="/initialize-your-own-android-library-project-from-scratch.html" class="sidebar-link">Initialize Your Own Android Library Project from Scratch</a></li><li><a href="/publishing-android-library-to-bintray.html" class="sidebar-link">Publishing Android Library to Bintray</a></li><li><a href="/reactive-single-data-source-android.html" class="active sidebar-link">Single Data Source Reactive Android Application</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/reactive-single-data-source-android.html#make-a-key-value-abstraction" class="sidebar-link">Make a Key-Value Abstraction</a></li><li class="sidebar-sub-header"><a href="/reactive-single-data-source-android.html#create-a-shared-preference-api-that-implements-keyvaluestore-interface" class="sidebar-link">Create a Shared Preference API that Implements KeyValueStore Interface</a></li><li class="sidebar-sub-header"><a href="/reactive-single-data-source-android.html#make-an-abstraction-for-a-reactivestore" class="sidebar-link">Make an Abstraction for a ReactiveStore</a></li><li class="sidebar-sub-header"><a href="/reactive-single-data-source-android.html#simple-user-reactive-store-example" class="sidebar-link">Simple User Reactive Store Example</a></li><li class="sidebar-sub-header"><a href="/reactive-single-data-source-android.html#example-implementation" class="sidebar-link">Example implementation</a></li></ul></li><li><a href="/offline-first-application.html" class="sidebar-link">Offline First Application</a></li></ul></div><div class="page"><div class="content"><h1 id="single-data-source-reactive-android-application"><a href="#single-data-source-reactive-android-application" aria-hidden="true" class="header-anchor">#</a> Single Data Source Reactive Android Application</h1><p>An Android application uses data that come from various data source. Call it Firebase, REST API, SQLite database, Shared preferences.</p><p>It's nice if we can maintain it as a <em>single data source</em> from many data sources and made it <em>reactive</em>. Why <em>reactive</em>? Because if there are changes in the data and screen opening it is showing it, it can automatically refresh the data by showing the latest version. It's <em>easier</em> than maintaining another mechanism to update the UI manually.</p><p>There is no standard about how to made this <em>reactive data store</em>. One of my favorites is using <a href="http://reactivex.io/" target="_blank" rel="noopener noreferrer"><code>ReactiveX</code><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a> Java or Kotlin version.</p><p>In this post, I will show you how to make a simple reactive key-value data store using <em>Shared Preferences</em>.</p><h2 id="make-a-key-value-abstraction"><a href="#make-a-key-value-abstraction" aria-hidden="true" class="header-anchor">#</a> Make a Key-Value Abstraction</h2><p>This is important if we want to implement another key-value based storage using another method.</p><div class="language- extra-class"><pre class="language-text"><code>interface KeyValueStore {
+    fun putBoolean(key: String, value: Boolean)
+    fun getBoolean(key: String, defaultValue: Boolean): Boolean
+    fun putInt(key: String, value: Int)
+    fun getInt(key: String, defaultValue: Int): Int
+    fun putString(key: String, value: String)
+    fun getString(key: String, defaultValue: String): String
+    fun putFloat(key: String, value: Float)
+    fun getFloat(key: String, defaultValue: Float): Float
+    fun putLong(key: String, value: Long)
+    fun getLong(key: String, defaultValue: Long): Long
+    fun putObject(key: String, `object`: Any)
+    fun &lt;T&gt; getObject(key: String, defaultValue: Any, tClass: Class&lt;T&gt;): T
+    fun putListString(key: String, value: List&lt;String&gt;)
+    fun getListString(key: String, defValue: List&lt;String&gt;): List&lt;String&gt;
+    fun putListObject(key: String, value: List&lt;Any&gt;)
+    fun &lt;T&gt; getListObject(key: String, defValue: List&lt;T&gt;): List&lt;T&gt;
+    fun removeKey(key: String)
+}
+</code></pre></div><h2 id="create-a-shared-preference-api-that-implements-keyvaluestore-interface"><a href="#create-a-shared-preference-api-that-implements-keyvaluestore-interface" aria-hidden="true" class="header-anchor">#</a> Create a Shared Preference API that Implements <code>KeyValueStore</code> Interface</h2><p>This is an example how a simple shared preferences API that implements the <code>KeyValueStore</code> interface.</p><p>Here, I use <code>GSON</code> to made it easier to store a custom object to shared preferences by serializing it into a JSON-based string.</p><div class="language- extra-class"><pre class="language-text"><code>import android.content.Context
+import android.content.SharedPreferences
+import android.preference.PreferenceManager
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
+import id.co.spots.app.data.KeyValueStore
+import org.json.JSONException
+
+class SharedPreferenceApi(context: Context,
+                          private val gson: Gson) : KeyValueStore {
+    private val sharedPreferences: SharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
+    private val editor: SharedPreferences.Editor = sharedPreferences.edit()
+
+    override fun putBoolean(key: String, value: Boolean) {
+        editor
+            .putBoolean(key, value)
+            .apply()
+    }
+
+    override fun getBoolean(key: String, defaultValue: Boolean): Boolean {
+        return sharedPreferences.getBoolean(key, defaultValue)
+    }
+
+    override fun putInt(key: String, value: Int) {
+        editor
+            .putInt(key, value)
+            .apply()
+    }
+
+    override fun getInt(key: String, defaultValue: Int): Int {
+        return sharedPreferences.getInt(key, defaultValue)
+    }
+
+    override fun putString(key: String, value: String) {
+        editor
+            .putString(key, value)
+            .apply()
+    }
+
+    override fun getString(key: String, defaultValue: String): String {
+        return sharedPreferences.getString(key, defaultValue)
+    }
+
+    override fun putFloat(key: String, value: Float) {
+        editor.putFloat(key, value).apply()
+    }
+
+    override fun getFloat(key: String, defaultValue: Float): Float {
+        return sharedPreferences.getFloat(key, defaultValue)
+    }
+
+    override fun putLong(key: String, value: Long) {
+        editor.putLong(key, value).apply()
+    }
+
+    override fun getLong(key: String, defaultValue: Long): Long {
+        return sharedPreferences.getLong(key, defaultValue)
+    }
+
+    override fun putObject(key: String, `object`: Any) {
+        val objectString = convertObjectToString(`object`)
+        putString(key, objectString)
+    }
+
+    override fun &lt;T&gt; getObject(key: String, defaultValue: Any, tClass: Class&lt;T&gt;): T {
+        val defValueString = convertObjectToString(defaultValue)
+        val jsonValue = sharedPreferences.getString(key, defValueString)
+        return convertJsonStringToObject(jsonValue, tClass)
+    }
+
+    private fun &lt;T&gt; convertJsonStringToObject(jsonValue: String, tClass: Class&lt;T&gt;): T {
+        return gson.fromJson(jsonValue, tClass)
+    }
+
+    override fun putListString(key: String, value: List&lt;String&gt;) {
+        putListObject(key, value)
+    }
+
+    @Throws(JSONException::class)
+    override fun getListString(key: String, defValue: List&lt;String&gt;): List&lt;String&gt; {
+        val defValueString = convertObjectToString(defValue)
+        val jsonValue = sharedPreferences.getString(key, defValueString)
+        return convertJsonStringToListString(jsonValue)
+    }
+
+    private fun convertJsonStringToListString(jsonValue: String): List&lt;String&gt; {
+        val type = object : TypeToken&lt;List&lt;String&gt;&gt;() {
+        }.type
+        return gson.fromJson&lt;List&lt;String&gt;&gt;(jsonValue, type)
+    }
+
+    override fun putListObject(key: String, value: List&lt;Any&gt;) {
+        val jsonValue = convertObjectToString(value)
+        editor.putString(key, jsonValue)
+        editor.apply()
+    }
+
+    @Throws(JSONException::class)
+    override fun &lt;T&gt; getListObject(key: String, defValue: List&lt;T&gt;): List&lt;T&gt; {
+        val defValueString = convertObjectToString(defValue)
+        val jsonValue = sharedPreferences.getString(key, defValueString)
+        return convertJsonStringToListObject(jsonValue)
+    }
+
+    private fun convertObjectToString(value: Any): String {
+        return gson.toJson(value)
+    }
+
+    @Throws(JSONException::class)
+    private fun &lt;T&gt; convertJsonStringToListObject(jsonValue: String): List&lt;T&gt; {
+        val typeToken = object : TypeToken&lt;List&lt;T&gt;&gt;() {
+        }.type
+
+        return gson.fromJson&lt;List&lt;T&gt;&gt;(jsonValue, typeToken)
+    }
+
+    override fun removeKey(key: String) {
+        editor.remove(key).apply()
+    }
+}
+
+</code></pre></div><h2 id="make-an-abstraction-for-a-reactivestore"><a href="#make-an-abstraction-for-a-reactivestore" aria-hidden="true" class="header-anchor">#</a> Make an Abstraction for a <code>ReactiveStore</code></h2><p>Here is an example of an abstraction of reactive store. We can make a specific store for each data we want to use in our application by implementing below interface.</p><p>I think the abstract methods are already clear.</p><div class="language- extra-class"><pre class="language-text"><code>import io.reactivex.Completable
+import io.reactivex.Observable
+
+interface ReactiveStore&lt;V&gt; {
+    fun get(): Observable&lt;V&gt;
+    fun save(value: V): Completable
+}
+</code></pre></div><p><strong>Note</strong>: If you want to know more about the <code>Observable</code> concept, please read this documentation of the Rx in <a href="http://reactivex.io/documentation/observable.html" target="_blank" rel="noopener noreferrer">this link<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>.</p><h2 id="simple-user-reactive-store-example"><a href="#simple-user-reactive-store-example" aria-hidden="true" class="header-anchor">#</a> Simple User Reactive Store Example</h2><p>For example, we want to store an user data that includes name, email and phone number.</p><p>First, we create a simple data class of the user.</p><div class="language- extra-class"><pre class="language-text"><code>data class User(val name: String, val email: String, val phone: String)
+</code></pre></div><p>Second, we create a class named <code>UserReactiveStore</code> that implements <code>ReactiveStore</code> interface.</p><div class="language- extra-class"><pre class="language-text"><code>class UserReactiveStore(private val keyValueStore: KeyValueStore) : ReactiveStore&lt;User&gt; {
+    override fun get(): Observable&lt;User&gt; {
+        // To be written
+    }
+
+    override fun save(value: User): Completable {
+        // To be written
+    }
+
+}
+</code></pre></div><p>Third, we use <code>PublishSubject</code> implementation on <code>Rx</code> to handle the <strong>reactive</strong> part.</p><div class="language- extra-class"><pre class="language-text"><code>class UserReactiveStore(private val keyValueStore: KeyValueStore) : ReactiveStore&lt;String, User&gt; {
+    private val userSubject: Subject&lt;User&gt; = PublishSubject.create&lt;User&gt;().toSerialized()
+    private val userSavedKey = &quot;SAVED_USER&quot;
+
+    override fun get(): Observable&lt;User&gt; {
+        // The observable of user data is initialized with data from key value storage
+        return userSubject.startWith(
+            keyValueStore.getObject(
+                userSavedKey,
+                User(&quot;, &quot;, &quot;), // This is default value if it's not saved yet on shared preferences
+                User::class.java
+            )
+        )
+    }
+
+    override fun save(value: User) {
+        return Completable.create { emitter -&gt;
+            // Save to shared preference
+            keyValueStore.putObject(userSavedKey, value)
+            // Notify current subject and the observable returned from `get` method 
+            // that it emits a new user value
+            userSubject.onNext(value)
+            // finish the completable
+            emitter.onComplete()
+        }
+    }
+
+}
+</code></pre></div><p>See above code blocks. After the real <code>save</code> implementation, it notify the subject or the observable based on it so every code that listen to this observable will also be notified when there is change in saved data.</p><h2 id="example-implementation"><a href="#example-implementation" aria-hidden="true" class="header-anchor">#</a> Example implementation</h2><div class="language- extra-class"><pre class="language-text"><code>val sharedPreferenceApi = SharedPreferenceApi(CONTEXT, GSON)
+val userStore = UserReactiveStore(sharedPreferenceApi)
+
+// Listen to user data changes
+
+userStore
+    .get()
+    .subscribe(
+        { user -&gt; /*There are changes in user data*/ },
+        { error -&gt; /*Handle error*/ }
+    )
+
+// Save changes
+
+userStore
+    .save()
+    .subscribe(
+        { /*Save succeeded*/},
+        { error -&gt; /*There is error when saving*/ }
+    )
+</code></pre></div><p>That's it!</p><p>With <code>Rx</code>, you also get a bonus. It's error handler in which case can handle unknown error for example when something bad happened on saved user data.</p></div><div class="page-edit"><!----><!----></div><div class="page-nav"><p class="inner"><span class="prev">
+        ← <a href="/publishing-android-library-to-bintray.html" class="prev">
+          Publishing Android Library to Bintray
+        </a></span><span class="next"><a href="/offline-first-application.html">
+          Offline First Application
+        </a> →
+      </span></p></div></div></div></div>
+    <script src="/assets/js/8.ed9cf4df.js" defer></script><script src="/assets/js/app.677728b0.js" defer></script>
+  </body>
+</html>

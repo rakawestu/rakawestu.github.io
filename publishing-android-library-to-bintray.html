@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Publishing Android Library to Bintray | Rakawm</title>
+    <meta name="description" content="Software Engineer, Motorcycle Enthusiast">
+    
+    
+    <link rel="preload" href="/assets/css/0.styles.021a0155.css" as="style"><link rel="preload" href="/assets/js/app.677728b0.js" as="script"><link rel="preload" href="/assets/js/7.8b0e9971.js" as="script"><link rel="prefetch" href="/assets/js/3.40849f77.js"><link rel="prefetch" href="/assets/js/2.61c5963e.js"><link rel="prefetch" href="/assets/js/4.18ecf1d4.js"><link rel="prefetch" href="/assets/js/5.9674cecb.js"><link rel="prefetch" href="/assets/js/6.a04bd145.js"><link rel="prefetch" href="/assets/js/8.ed9cf4df.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.021a0155.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div><a href="/" class="home-link router-link-active"><!----><span class="site-name">
+      Rakawm
+    </span></a><div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""><!----></div><nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">Home</a></div><div class="nav-item"><a href="https://github.com/rakawestu" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><!----></nav></div></header><div class="sidebar-mask"></div><div class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">Home</a></div><div class="nav-item"><a href="https://github.com/rakawestu" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><!----></nav><ul class="sidebar-links"><li><a href="/" class="sidebar-link">Hello World</a></li><li><a href="/android-modular.html" class="sidebar-link">Modular Android Project</a></li><li><a href="/initialize-your-own-android-library-project-from-scratch.html" class="sidebar-link">Initialize Your Own Android Library Project from Scratch</a></li><li><a href="/publishing-android-library-to-bintray.html" class="active sidebar-link">Publishing Android Library to Bintray</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/publishing-android-library-to-bintray.html#_1-create-bintray-account-and-repository" class="sidebar-link">1. Create Bintray Account and Repository</a></li><li class="sidebar-sub-header"><a href="/publishing-android-library-to-bintray.html#_2-create-publication-script" class="sidebar-link">2. Create Publication Script</a></li><li class="sidebar-sub-header"><a href="/publishing-android-library-to-bintray.html#_3-run-gradle-publication-task" class="sidebar-link">3. Run Gradle Publication Task</a></li><li class="sidebar-sub-header"><a href="/publishing-android-library-to-bintray.html#_4-test-your-published-library" class="sidebar-link">4. Test your Published Library</a></li></ul></li><li><a href="/reactive-single-data-source-android.html" class="sidebar-link">Single Data Source Reactive Android Application</a></li><li><a href="/offline-first-application.html" class="sidebar-link">Offline First Application</a></li></ul></div><div class="page"><div class="content"><h1 id="publishing-android-library-to-bintray"><a href="#publishing-android-library-to-bintray" aria-hidden="true" class="header-anchor">#</a> Publishing Android Library to Bintray</h1><p>In my previous post about Android library project initialization I wrote how to write our own library or module to support our main application. Look at library dependencies at your gradle script.</p><div class="language- extra-class"><pre class="language-text"><code>compile 'com.android.support:appcompat-v7:25.2.0'
+</code></pre></div><p>Above code was an example of a Maven library that we includes in our application.</p><p>In this post I will talk more about how I publish library to public maven repository such as bintray, maven central, etc so people can start using your library easier with same code format as above code example.</p><p>Basically if we want to publish a library in maven repository we need to have several things:</p><ul><li><strong>The artifacts</strong> → binary that we want to publish. For example: <code>jar</code> (Java library) file, <code>aar</code> (Android library) file, <code>pods</code> (iOS library) file.</li><li><strong>Group identifier</strong> → publisher identifier. Mostly domain name for easier publisher identification. For example: <code>com.domain.sdk</code>.</li><li><strong>Artifact identifier</strong> → library or artifact identifier. Mostly library name for easier library identifier in specific group. For example: <code>payment-module</code>.</li><li><strong>Version name</strong> → to identify revision of library. For example: <code>1.2.1</code>.</li></ul><p>Above items was minimum things needed to publish and use the library. In Maven it was included on <code>pom.xml</code> file. The pom.xml file is the core of a project’s configuration in Maven. It includes many information to build and use the library project.</p><p>For library user they will just have define the library like this in their gradle script.</p><div class="language- extra-class"><pre class="language-text"><code>compile 'com.domain.sdk:payment-module:1.2.1'
+</code></pre></div><p>Easy, isn’t it? Of course this maven repository was made to realize above dependencies concept in modern Android or Java development.</p><p>There are several optional things to considerate when publishing library.</p><ul><li>External dependencies → if your library needs another library you can includes it by knowing the group identifier, artifact identifier and also the latest version name.</li><li>More project details → project name, description, url, licenses, etc. you can define to explain more about your library project.</li></ul><p>So the bare minimum generated <code>pom.xml</code> file should be like this.</p><div class="language- extra-class"><pre class="language-text"><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot; xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;&gt;
+  &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+  &lt;groupId&gt;com.domain.sdk&lt;/groupId&gt;
+  &lt;artifactId&gt;payment-module&lt;/artifactId&gt;
+  &lt;version&gt;1.2.1&lt;/version&gt;
+  &lt;packaging&gt;aar&lt;/packaging&gt;
+  &lt;dependencies&gt;
+    &lt;dependency&gt;
+      &lt;groupId&gt;com.android.support&lt;/groupId&gt;
+      &lt;artifactId&gt;appcompat-v7&lt;/artifactId&gt;
+      &lt;version&gt;25.2.0&lt;/version&gt;
+    &lt;/dependency&gt;
+  &lt;/dependencies&gt;
+&lt;/project&gt;
+</code></pre></div><p><strong>Note:</strong>
+Above example was basic usage for Android library Maven publication. For more information about Maven concept you can take a look at <a href="https://maven.apache.org/pom.html" target="_blank" rel="noopener noreferrer">this reference<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>.</p><p>So, now we have grasped the concept behind Android library publication by using <strong>Maven</strong>. The next step is to know how we can use its concept in our library so we can publish it and people can start using it. If your Android project was already using gradle and you want to publish it to <a href="https://bintray.com/" target="_blank" rel="noopener noreferrer"><code>bintray</code><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a> then this tutorial is relevant to you.</p><h2 id="_1-create-bintray-account-and-repository"><a href="#_1-create-bintray-account-and-repository" aria-hidden="true" class="header-anchor">#</a> 1. Create Bintray Account and Repository</h2><p>Basically you just need to use <code>maven-publish</code> plugin provided by gradle to make it easier to publish your library. Also you can use bintray plugin if you’re going to publish it on your own bintray repository. Please make account and repository for bintray if you don’t have it. You can read <a href="https://www.jfrog.com/knowledge-base/creating-a-new-repository/" target="_blank" rel="noopener noreferrer">Creating a New Repository in Bintray<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a> article to get started on it.</p><h2 id="_2-create-publication-script"><a href="#_2-create-publication-script" aria-hidden="true" class="header-anchor">#</a> 2. Create Publication Script</h2><p>After we done the first step then we can start writing publication script in gradle. Below script is an example to publish your library to your bintray repository (credential was obtained in step 1).</p><div class="language- extra-class"><pre class="language-text"><code>apply plugin: 'com.jfrog.bintray'
+apply plugin: 'maven-publish'
+publishing {
+    publications {
+        Production(MavenPublication) {
+            artifact(&quot;$buildDir/outputs/aar/payment-module-release.aar&quot;)
+            groupId 'com.domain.sdk'
+            artifactId 'payment-module'
+            version '1.2.1'
+
+            //The publication doesn't know about our dependencies, so we have to manually add them to the pom
+            pom.withXml {
+                def dependenciesNode = asNode().appendNode('dependencies')
+
+                //Iterate over the compile dependencies (we don't want the test ones), adding a &lt;dependency&gt; node for each
+                configurations.compile.allDependencies.each {
+                    def dependencyNode = dependenciesNode.appendNode('dependency')
+                    dependencyNode.appendNode('groupId', it.group)
+                    dependencyNode.appendNode('artifactId', it.name)
+                    dependencyNode.appendNode('version', it.version)
+                }
+            }
+        }
+        Sandbox(MavenPublication) {
+            artifact(&quot;$buildDir/outputs/aar/corekit-development-release.aar&quot;)
+            groupId 'com.domain.sdk'
+            artifactId 'payment-module'
+            version '1.2.1-SANDBOX'
+
+            //The publication doesn't know about our dependencies, so we have to manually add them to the pom
+            pom.withXml {
+                def dependenciesNode = asNode().appendNode('dependencies')
+
+                //Iterate over the compile dependencies (we don't want the test ones), adding a &lt;dependency&gt; node for each
+                configurations.compile.allDependencies.each {
+                    def dependencyNode = dependenciesNode.appendNode('dependency')
+                    dependencyNode.appendNode('groupId', it.group)
+                    dependencyNode.appendNode('artifactId', it.name)
+                    dependencyNode.appendNode('version', it.version)
+                }
+            }
+        }    }
+}
+bintray {
+    // Get Bintray credential from environment variable
+    user = System.getenv('BINTRAY_USER') // Get bintray User
+    key = System.getenv('BINTRAY_KEY') // Get bintray Secret Key
+    configurations = ['archives']
+    pkg {
+        repo = 'maven'
+        name = project.name
+        userOrg = 'owner-name'
+        licenses = ['Apache-2.0']
+        desc = 'Payment module SDK'
+        websiteUrl = &quot;https://domain.com&quot;
+        publish = true
+    }
+    publications = ['Production', 'Sandbox']
+
+}
+</code></pre></div><p>By looking at above script, we know that <code>artifact</code>, <code>groupId</code>, <code>artifactId</code> and <code>version</code> is needed to make a Maven publication. Note that we can make <strong>several</strong> publications within a library project. For example if our library can have several flavors such as sandbox and production build. We can make two different maven publications with same group and artifact identifier but with different version name. Sandbox one can have <code>-SANDBOX</code> suffix on its version.</p><p>Also in above script you will notice that there are some kind of pom related scripts. Normal implementation of <code>maven-publish</code> plugin will produce basic <code>pom.xml</code> without external dependencies needed to build our library so we need to add it manually to generated <code>pom.xml</code> by detecting our dependencies in our gradle script. So our library dependencies such as <code>compile 'com.android.support:appcompat-v7:25.2.0'</code> will be added to generated <code>pom.xml</code>. Users that use our library will also includes our external library without they even write it explicitly in their application gradle script.</p><p>Another things that matters when we want to publish the library in bintray was <code>bintray</code> part. You need to includes your credentials. To make it secure, you can add it by using environment variables. Inside <code>pkg</code> you can set your project details that will be shown on your bintray page. Also <code>publications</code> part will define your Maven publication that you want to includes on your bintray repository. In this part I set <code>Sandbox</code> and <code>Production</code> in the publications because I want to publish those variants on the bintray. Note that <code>Sandbox</code> and <code>Production</code> publications were defined in <code>publishing</code> → <code>publications</code>.</p><h2 id="_3-run-gradle-publication-task"><a href="#_3-run-gradle-publication-task" aria-hidden="true" class="header-anchor">#</a> 3. Run Gradle Publication Task</h2><p>After completed previous steps you can start publishing your library by call specific gradle task created for <code>bintray</code> plugin named <code>bintrayUpload</code>. Please note that the task was located inside your library module (for my example it’s <code>payment-module</code>).</p><div class="language- extra-class"><pre class="language-text"><code>&gt; export BINTRAY_USER=YourBintrayUsername
+&gt; export BINTRAY_KEY=YourBintraySecretKey
+&gt; ./gradlew :clean :payment-module:assembleRelease :payment-module:bintrayUpload
+</code></pre></div><h2 id="_4-test-your-published-library"><a href="#_4-test-your-published-library" aria-hidden="true" class="header-anchor">#</a> 4. Test your Published Library</h2><p>By completing third step your library now is publicly available on your bintray repository. Please make sure you have added your bintray repository name on your <code>repositories</code>.</p><div class="language- extra-class"><pre class="language-text"><code>repositories {
+    maven { url &quot;http://dl.bintray.com/owner-name/maven&quot; }
+}
+</code></pre></div><p>Then on <code>dependencies</code> we can add our library definition easily.</p><div class="language- extra-class"><pre class="language-text"><code>compile 'com.domain.sdk:payment-module:1.2.1'
+</code></pre></div><p>Start your gradle sync process and wait for your library be fetched on your project.</p><p><strong>Notes:</strong></p><ul><li>If your library have external dependencies defined please make sure their source repository was included on <code>repositories</code> too.
+If you want to use two different flavors in your project you must define the flavors in your gradle script. Example:</li></ul><div class="language- extra-class"><pre class="language-text"><code>sandboxCompile 'com.domain.sdk:payment-module:1.2.1-SANDBOX'
+productionCompile 'com.domain.sdk:payment-module:1.2.1'
+
+</code></pre></div><p>That’s it from me. Hope it helps you publish your own library so it can be used by other people. Congratulations, you have contributed to community 😃</p></div><div class="page-edit"><!----><!----></div><div class="page-nav"><p class="inner"><span class="prev">
+        ← <a href="/initialize-your-own-android-library-project-from-scratch.html" class="prev">
+          Initialize Your Own Android Library Project from Scratch
+        </a></span><span class="next"><a href="/reactive-single-data-source-android.html">
+          Single Data Source Reactive Android Application
+        </a> →
+      </span></p></div></div></div></div>
+    <script src="/assets/js/7.8b0e9971.js" defer></script><script src="/assets/js/app.677728b0.js" defer></script>
+  </body>
+</html>
